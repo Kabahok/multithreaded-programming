@@ -20,11 +20,10 @@ public class Main {
             texts[i] = generateText("abc", 3 + random.nextInt(3));
         }
 
-        for (String text : texts) {
             List<Thread> threads = Arrays.asList(
-              new Thread(new CheckforRepeat(text)),
-              new Thread(new CheckOrder(text)),
-              new Thread(new CheckPalindrom(text))
+              new Thread(new CheckforRepeat(texts)),
+              new Thread(new CheckOrder(texts)),
+              new Thread(new CheckPalindrom(texts))
             );
 
             for (Thread thread : threads) {
@@ -34,7 +33,7 @@ public class Main {
             for (Thread thread : threads) {
                 thread.join();
             }
-        }
+
 
         System.out.printf("Красивых слов с длиной 3: %d шт\n" +
                 "Красивых слов с длиной 4: %d шт\n" +
